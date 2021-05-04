@@ -1,0 +1,78 @@
+body {
+    background: linear-gradient( 45deg, thistle, plum);
+}
+
+h1 {
+    text-align: center;
+    margin: 8rem;
+}
+
+h2 {
+    padding: 0 2rem 2rem;
+}
+
+.directions,
+form {
+    border: 3px solid paleturquoise;
+    text-align: center;
+    padding: 4rem;
+    margin: 3.5rem;
+}
+
+span {
+    background: url(../assets/brushstroke.omg.svg) no-repeat bottom;
+    background-size: 100%;
+    padding: 0.5rem;
+}
+
+.makeupType {
+    padding: 0.5rem;
+}
+
+select {
+    cursor: pointer;
+}
+
+fieldset {
+    border: none;
+    margin-top: 2rem;
+    p {
+        margin-bottom: 3rem;
+    }
+    label {
+        padding-left: 2rem;
+    }
+}
+
+button {
+    background-color: paleturquoise;
+    border: 3px solid paleturquoise;
+    border-radius: 2rem;
+    padding: 0.5rem 2rem;
+    cursor: pointer;
+}
+
+button:hover,
+button:focus {
+    background-color: white;
+}
+
+button[type="submit"] {
+        margin-top: 4rem;
+    }
+
+button[type="reset"] {
+    margin-bottom: 1.5rem;
+}
+
+footer{
+    background-color: paleturquoise;
+    p {
+    text-align: center;
+    padding: 2rem;
+    margin-bottom: 0;
+    }
+    a {
+        color: black;
+    }
+}
