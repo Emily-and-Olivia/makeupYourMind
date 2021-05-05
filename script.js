@@ -18,6 +18,7 @@ app.findTheMakeup = function(productChoice){
         // pass in API params
         product_type: productChoice
     });
+    
     // get information from the API endpoint
     fetch(url)
         .then(function(response){
