@@ -16,22 +16,24 @@ app.findTheMakeup = function (productChoice) {
         // pass in API params
         product_type: productChoice
     });
+    
     // get information from the API endpoint
     fetch(url)
-        .then(function (response) {
+        .then(function(response){
             return response.json();
         })
-        .then(function (jsonResponse) {
+        .then(function(jsonResponse){
             console.log(jsonResponse);
             app.displayProducts(jsonResponse);
         })
+
 };
 // define a method which takes the data and puts it onto the page
-app.displayProducts = function (productArray) {
+app.displayProducts = function(productArray){
     // *Remember* to clear/empty out the <ul>
     app.resultContainer.replaceChildren();
     // loop through the array
-    productArray.forEach(function (product) {
+    productArray.forEach(function(product){
         console.log(product);
         // create elements to house the product name, image and price
         const listItem = document.createElement('li');
@@ -48,10 +50,13 @@ app.displayProducts = function (productArray) {
         listItem.append(productTitle, price, image);
         app.resultContainer.appendChild(listItem);
     });
+
 }
-// IF there is no price included on the product, do not print to page
-// IF no products match the users request, print a message to the page asking to search again
+    // IF there is no price included on the product, do not print to page
+    // IF no products match the users request, print a message to the page asking to search again
 // define a method to setup event listeners
 // attach an event listener when user submits the form
 // attach a second event listener when user clicks the reset button to clear the results
+
 app.init();
+
