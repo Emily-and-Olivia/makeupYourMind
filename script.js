@@ -28,7 +28,6 @@ app.findTheMakeup = function(productChoice){
             app.displayProducts(jsonResponse);
         })
 
-        
 };
 // define a method which takes the data and puts it onto the page
 app.displayProducts = function(productArray){
