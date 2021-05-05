@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makeup Your Mind</title>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="./styles/style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&family=Sacramento&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/adb5bbd60b.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Header Begins -->
+        <header>
+            <h1>Makeup Your Mind</h1>
+
+        </header>
+
+        <!-- Main Begins -->
+        <main>
+            <div class="directions">
+                <h2>Looking for something new to <span>shakeup</span> your <span>makeup</span> routine?</h2>
+                <h3>Tell us which product you're looking for and we'll give you some options!</h3>
+            </div> <!--directions-->
+
+            <!-- Dropdown menu with the following options -->
+            <!-- Product Types -->
+            <!-- Blush -->
+            <!-- Bronzer -->
+            <!-- Eyebrows -->
+            <!-- Eyeliner -->
+            <!-- Eyeshadow -->
+            <!-- Foundation -->
+            <!-- Lipliner -->
+            <!-- Lipstick -->
+            <!-- Mascara -->
+            <!-- Nail Polish -->
+
+            <form>
+                <label for="makeupType" class="makeupType">What are you looking for?</label>
+                <select name="makeupType" id="makeupType">
+                    <option value="pleaseChoose" selected disabled>Please Select an Option</option>
+                    <option value="blush">Blush</option>
+                    <option value="bronzer">Bronzer</option>
+                    <option value="eyebrows">Eyebrows</option>
+                    <option value="eyeshadow">Eyeshadow</option>
+                    <option value="foundation">Foundation</option>
+                    <option value="lipLiner">Lip Liner</option>
+                    <option value="lipstick">Lipstick</option>
+                    <option value="mascara">Mascara</option>
+                    <option value="nailPolish">Nail Polish</option>
+                </select>
+
+                <fieldset>
+                    <p>Any additional requests?</p>
+                    <label for="crueltyFree">Cruelty-Free</label>
+                    <input type="checkbox" id="crueltyFree" name="additionalRequest" value="crueltyFree">
+
+                    <label for="oilFree">Oil-Free</label>
+                    <input type="checkbox" id="oilFree" name="additionalRequest" value="moilFree">
+
+                    <label for="alcoholFree">Alcohol-Free</label>
+                    <input type="checkbox" id="alcoholFree" name="additionalRequest" value="alcoholFree">
+                </fieldset>
+                <button type="submit">Submit</button>
+            </form>
+
+            <section class="userResults">
+                <ul id="resultContainer">
+                    <!-- data will append here -->
+                </ul>
+            </section>
+
+            <button type="reset">Reset</button>
+
+        </main>
+    </div> <!--wrapper-->
+    <!-- Footer Begins -->
+    <footer>
+        <p>Copyright © 2021 <a href="https://junocollege.com">Juno College</a></p>
+    </footer>
+
+    <!-- Javascript -->
+    <script src="./script.js"></script>
+</body>
+
+</html>
