@@ -1,23 +1,23 @@
-// PSEUDO CODE
 // Create a namespace object to represent our app
 const app = {};
 app.resultContainer = document.querySelector('#resultContainer');
 app.productSelect = document.querySelector("#makeupType")
+app.checkboxes = document.querySelectorAll("input[type='checkbox']");
 app.submitButton = document.querySelector("form");
 app.resetButton = document.querySelector("#reset");
 // define the init method to kickstart the app
 app.init = (function () {
-    // app.findTheMakeup();
     app.addEventListeners();
 })
 // define a method which makes a request to the API
-app.findTheMakeup = function (product) {
+app.findTheMakeup = function (product, filter) {
     // utilise URL constructor to create object of base API endpoint
     const url = new URL(`http://makeup-api.herokuapp.com/api/v1/products.json`);
     // utilise URLSearchParams constructor to format API parameters
     url.search = new URLSearchParams({
         // pass in API params
-        product_type: product
+        product_type: product,
+        product_tags: filter
     });
     
     // get information from the API endpoint
@@ -35,46 +35,42 @@ app.findTheMakeup = function (product) {
 // define a method which takes the data and puts it onto the page
 app.displayProducts = function(productArray){
 
-    const productsWithPrices = productArray.filter((product) => {
-        if (product.price != "0.0") {
-            return true;
-        } else {
-            return false;
-        }
-    });
+    const filteredProducts = productArray
 
     // *Remember* to clear/empty out the <ul>
     app.resultContainer.replaceChildren();
+
+    // IF no products match the users request, print a message to the page asking to search again
+    if (filteredProducts.length == 0) {
+        alert(`Looks like no products matched your search. Please try again!`);
+    } else {
     // loop through the array
-    productsWithPrices.forEach(function(product){
-        
-        // create elements to house the product name, image and price
-        const listItem = document.createElement('li');
+        filteredProducts.forEach(function(product){
+            
+            // create elements to house the product name, image and price
+            const listItem = document.createElement('li');
 
-        // <h4> - product name
-        const productTitle = document.createElement('h4');
-        productTitle.textContent = `${product.name}`;
+            // <h4> - product name
+            const productTitle = document.createElement('h4');
+            productTitle.textContent = `${product.name}`;
 
-        // <h5> - brand
-        const productBrand = document.createElement('h5');
-        productBrand.textContent = `By: ${product.brand}`;
+            // <h5> - brand
+            const productBrand = document.createElement('h5');
+            productBrand.textContent = `By: ${product.brand}`;
 
-        // <p> - price
-        const price = document.createElement('p');
-        price.textContent = `Price: $${product.price}`;
+            // image
+            const image = document.createElement('img');
+            image.src = product.image_link;
 
-        // image
-        const image = document.createElement('img');
-        image.src = product.image_link;
+            // buy now
+            const buyNow = document.createElement('p');
+            buyNow.innerHTML = `<a href="${product.product_link}" target="_blank" rel="noopener noreferrer">Buy Now</a>`;
 
-        // buy now
-        const buyNow = document.createElement('p');
-        buyNow.innerHTML = `<a href="${product.product_link}">Buy Now</a>`;
-
-        // append all the elements to the <li>
-        listItem.append(productTitle, productBrand, price, image, buyNow);
-        app.resultContainer.appendChild(listItem);
-    });
+            // append all the elements to the <li>
+            listItem.append(productTitle, productBrand, image, buyNow);
+            app.resultContainer.appendChild(listItem);
+        });
+    }
 }
 
 
@@ -90,12 +86,23 @@ app.submitEventListener = function() {
     app.submitButton.addEventListener("submit", function(event) {
         
         event.preventDefault();
+
+        // save the value of the checked box (user input) 
+        // use that to filter results
         
         const userProduct = app.productSelect.selectedOptions;
+        const userFilters = [];
         
+        app.checkboxes.forEach(function(box) {
+            if (box.checked) {
+                userFilters.push(box.value);
+            }
+        });
+
         for (let i = 0; i < userProduct.length; i++) {
-            app.findTheMakeup(userProduct[i].label);
+            app.findTheMakeup(userProduct[i].label, userFilters);
         }
+
     });
 }
 
@@ -108,11 +115,3 @@ app.resetEventListener = function() {
 }
 
 app.init();
-
-// STRETCH GOALS
-
-// filter products by creulty-free, oil-free, and alcohol-free (based off users input of the checkboxes)
-// IF no products match the users request, print a message to the page asking to search again
-// if (product === "") {
-//     app.resultContainer.innerHTML = `<p>Looks like no products matched your search. Please try again!</p>`
-// } else {
