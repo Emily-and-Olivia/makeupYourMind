@@ -12,7 +12,7 @@ app.init = (function () {
 // define a method which makes a request to the API
 app.findTheMakeup = function (product, filter) {
     // utilise URL constructor to create object of base API endpoint
-    const url = new URL(`http://makeup-api.herokuapp.com/api/v1/products.json`);
+    const url = new URL(`https://makeup-api.herokuapp.com/api/v1/products.json`);
     // utilise URLSearchParams constructor to format API parameters
     url.search = new URLSearchParams({
         // pass in API params
