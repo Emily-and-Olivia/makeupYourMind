@@ -1,0 +1,45 @@
+ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+li {
+    width: 30%;
+    padding: 20px;
+    margin: 2rem 1rem;
+    border: 3px solid paleturquoise;
+    border-radius: 1rem;
+    list-style-type: none;
+    text-align: center;
+}
+
+img {
+    width: 100%;
+    background-color: white;
+    border: 1px solid black;
+}
+
+a {
+    background-color: paleturquoise;
+    border: 3px solid paleturquoise;
+    border-radius: 2rem;
+    padding: 0.5rem 2rem;
+    cursor: pointer;
+}
+
+a:hover,
+a:focus {
+    background-color: white;
+}
+
+@media (max-width: 936px) {
+    ul {
+        flex-direction: column;
+    }
+    
+    li {
+        width: 90%;
+    }
+}
+
+

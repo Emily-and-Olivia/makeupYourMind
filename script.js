@@ -51,20 +51,28 @@ app.displayProducts = function(productArray){
         // create elements to house the product name, image and price
         const listItem = document.createElement('li');
 
-        // <h4> - brand and product name
+        // <h4> - product name
         const productTitle = document.createElement('h4');
-        productTitle.textContent = `${product.brand} ${product.name}`;
+        productTitle.textContent = `${product.name}`;
+
+        // <h5> - brand
+        const productBrand = document.createElement('h5');
+        productBrand.textContent = `By: ${product.brand}`;
 
         // <p> - price
         const price = document.createElement('p');
-        price.textContent = product.price;
+        price.textContent = `Price: $${product.price}`;
 
         // image
         const image = document.createElement('img');
         image.src = product.image_link;
 
+        // buy now
+        const buyNow = document.createElement('p');
+        buyNow.innerHTML = `<a href="${product.product_link}">Buy Now</a>`;
+
         // append all the elements to the <li>
-        listItem.append(productTitle, price, image);
+        listItem.append(productTitle, productBrand, price, image, buyNow);
         app.resultContainer.appendChild(listItem);
     });
 }
